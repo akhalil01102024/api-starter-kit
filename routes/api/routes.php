@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+/** Auth */
+Route::prefix('auth')->name('auth.')->group(base_path(path: 'routes/api/auth.php'));
+
+/** Home */
+Route::get('/user', HomeController::class)->name('home');
