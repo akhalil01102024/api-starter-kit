@@ -2,9 +2,12 @@
 
 namespace App\Http\Resources\Common;
 
+use App\Attributes\Enums\InResource;
 use BackedEnum;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use ReflectionClass;
+use ReflectionMethod;
 
 /** @property-read BackedEnum $resource */
 class BackedEnumResource extends JsonResource
@@ -20,8 +23,18 @@ class BackedEnumResource extends JsonResource
             'value' => $this->resource->value,
         ];
 
-        if (method_exists(object_or_class: $this->resource, method: 'label')) {
-            $data['label'] = $this->resource->label();
+        $reflection = new ReflectionClass($this->resource);
+        foreach ($reflection->getMethods(filter: ReflectionMethod::IS_PUBLIC) as $method) {
+            $attributes = $method->getAttributes(name: InResource::class);
+            if (empty($attributes)) {
+                continue;
+            }
+
+            /** @var InResource $attribute */
+            $attribute = $attributes[0]->newInstance();
+            $methodName = $method->getName();
+
+            $data[$attribute->key ?? $methodName] = $this->resource->$methodName();
         }
 
         return $data;

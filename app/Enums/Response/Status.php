@@ -2,6 +2,7 @@
 
 namespace App\Enums\Response;
 
+use App\Attributes\Enums\InResource;
 use Illuminate\Support\Str;
 
 enum Status: int
@@ -108,6 +109,7 @@ enum Status: int
         return $this->isClientError() || $this->isServerError();
     }
 
+    #[InResource]
     public function label(): string
     {
         return Str::of(string: $this->name)->replace(search: '_', replace: ' ')->title()->toString();
