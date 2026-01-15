@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Responses;
+namespace App\Concerns\Response;
 
 use App\Enums\Response\Status;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract readonly class ApiResponse implements Responsable
+trait Responsable
 {
     public function __construct(
-        public array $data = [],
-        public Status $status = Status::OK,
-        public array $headers = [],
+        public readonly array $data = [],
+        public readonly Status $status = Status::OK,
+        public readonly array $headers = [],
     ) {}
 
     public function toResponse($request): JsonResponse
@@ -41,7 +40,7 @@ abstract readonly class ApiResponse implements Responsable
                 'data' => $data ?? [],
                 ...$additionalData,
             ],
-            status: $status->value,
+            status: $status,
             headers: $headers,
         );
     }

@@ -2,10 +2,12 @@
 
 namespace App\Responses;
 
+use App\Concerns\Response\Responsable;
 use App\Enums\Response\Status;
 use Error;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Contracts\Support\Responsable as ResponsableContract;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -14,8 +16,10 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;
 use ValueError;
 
-final readonly class ExceptionResponse extends ApiResponse
+final readonly class ExceptionResponse implements ResponsableContract
 {
+    use Responsable;
+
     public static function fromError(Error $exception, Request $request): JsonResponse
     {
         return self::error(

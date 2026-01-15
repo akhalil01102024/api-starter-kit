@@ -2,6 +2,8 @@
 
 namespace App\Enums\Response;
 
+use Illuminate\Support\Str;
+
 enum Status: int
 {
     // 1xx Informational
@@ -76,51 +78,38 @@ enum Status: int
     case NOT_EXTENDED = 510;
     case NETWORK_AUTHENTICATION_REQUIRED = 511;
 
-    /**
-     * Check if the status code is informational (1xx).
-     */
     public function isInformational(): bool
     {
         return $this->value >= 100 && $this->value < 200;
     }
 
-    /**
-     * Check if the status code is successful (2xx).
-     */
     public function isSuccessful(): bool
     {
         return $this->value >= 200 && $this->value < 300;
     }
 
-    /**
-     * Check if the status code is a redirection (3xx).
-     */
     public function isRedirection(): bool
     {
         return $this->value >= 300 && $this->value < 400;
     }
 
-    /**
-     * Check if the status code is a client error (4xx).
-     */
     public function isClientError(): bool
     {
         return $this->value >= 400 && $this->value < 500;
     }
 
-    /**
-     * Check if the status code is a server error (5xx).
-     */
     public function isServerError(): bool
     {
         return $this->value >= 500 && $this->value < 600;
     }
 
-    /**
-     * Check if the status code is an error (4xx or 5xx).
-     */
     public function isError(): bool
     {
         return $this->isClientError() || $this->isServerError();
+    }
+
+    public function label(): string
+    {
+        return Str::of(string: $this->name)->replace(search: '_', replace: ' ')->title()->toString();
     }
 }

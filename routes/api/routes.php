@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('auth')->name('auth.')->group(base_path(path: 'routes/api/auth.php'));
 
 /** Home */
-Route::get('/user', HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home');

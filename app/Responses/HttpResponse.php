@@ -2,13 +2,17 @@
 
 namespace App\Responses;
 
+use App\Concerns\Response\Responsable;
 use App\Enums\Response\Status;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Support\Responsable as ResponsableContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-final readonly class HttpResponse extends ApiResponse
+final readonly class HttpResponse implements ResponsableContract
 {
+    use Responsable;
+
     public static function noContent(): self
     {
         return new self(status: Status::NO_CONTENT);
@@ -21,7 +25,7 @@ final readonly class HttpResponse extends ApiResponse
         array $headers = [],
     ): self {
         return self::error(
-            message: $message ?? __(key: 'responses.messages.unauthenticated'),
+            message: $message ?? __(key: 'response.messages.unauthenticated'),
             data: $data,
             additionalData: $additionalData,
             status: Status::UNAUTHORIZED,
@@ -36,7 +40,7 @@ final readonly class HttpResponse extends ApiResponse
         array $headers = [],
     ): self {
         return self::error(
-            message: $message ?? __(key: 'responses.messages.unauthorized'),
+            message: $message ?? __(key: 'response.messages.unauthorized'),
             data: $data,
             additionalData: $additionalData,
             status: Status::FORBIDDEN,
@@ -51,7 +55,7 @@ final readonly class HttpResponse extends ApiResponse
         array $headers = [],
     ): self {
         return self::error(
-            message: $message ?? __(key: 'responses.messages.notfound'),
+            message: $message ?? __(key: 'response.messages.notfound'),
             data: $data,
             additionalData: $additionalData,
             status: Status::NOT_FOUND,
