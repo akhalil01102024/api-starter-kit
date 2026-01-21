@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Actions\V1\Auth;
 
 use Illuminate\Http\Request;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Actions\Auth;
+namespace App\Actions\V1\Auth;
 
-use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\V1\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Hash;

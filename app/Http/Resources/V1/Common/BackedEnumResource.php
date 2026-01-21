@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Common;
+namespace App\Http\Resources\V1\Common;
 
 use App\Attributes\Enums\InResource;
 use BackedEnum;

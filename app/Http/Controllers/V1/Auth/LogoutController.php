@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\V1\Auth;
 
-use App\Actions\Auth\LogoutAction;
+use App\Actions\V1\Auth\LogoutAction;
 use App\Http\Controllers\Controller;
 use App\Responses\HttpResponse;
 use Illuminate\Http\Request;
