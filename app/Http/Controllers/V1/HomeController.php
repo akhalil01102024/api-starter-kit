@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function __invoke(): HttpResponse
     {
-        return HttpResponse::success(message: 'Home page loaded.');
+        return HttpResponse::success(message: 'V1 Home');
     }
 }

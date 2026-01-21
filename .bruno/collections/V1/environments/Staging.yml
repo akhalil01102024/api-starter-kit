@@ -4,5 +4,3 @@ variables:
     value: https://example-backend-staging.wakeb.tech/v1
   - name: token
     value: ""
-  - name: baseUrlV1
-    value: "{{baseUrl}}/v1"

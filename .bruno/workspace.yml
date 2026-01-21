@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "API Starter Kit"
+  type: workspace
+
+collections:
+  - name: "V1"
+    path: "collections\\V1"
+
+specs:
+
+docs: ''

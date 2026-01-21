@@ -1,12 +1,11 @@
 info:
-  name: Logout
+  name: Home
   type: http
   seq: 2
 
 http:
-  method: POST
-  url: "{{baseUrlV1}}/auth/logout"
-  auth: inherit
+  method: GET
+  url: "{{baseUrl}}"
 
 settings:
   encodeUrl: true
