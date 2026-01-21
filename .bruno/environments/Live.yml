@@ -1,0 +1,8 @@
+name: Live
+variables:
+  - name: baseUrl
+    value: https://example-backend.wakeb.tech
+  - name: token
+    value: ""
+  - name: baseUrlV1
+    value: "{{baseUrl}}/v1"
