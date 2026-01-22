@@ -28,7 +28,7 @@ final readonly class LoginAction
             RateLimiter::hit(key: $throttleKey);
 
             throw ValidationException::withMessages(messages: [
-                'email' => 'The provided credentials are incorrect.',
+                'email' => __(key: 'auth.failed'),
             ]);
         }
 
