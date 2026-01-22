@@ -81,7 +81,7 @@ final readonly class ExceptionResponse implements ResponsableContract
             return $exception->getMessage();
         }
 
-        return $exception instanceof HttpExceptionInterface ? $exception->getMessage() : __(key: 'responses.messages.server_error');
+        return $exception instanceof HttpExceptionInterface ? $exception->getMessage() : __(key: 'response.messages.server_error');
     }
 
     private static function generateExceptionDebugData(Throwable $exception): array
