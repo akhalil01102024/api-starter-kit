@@ -13,6 +13,21 @@ final readonly class HttpResponse implements ResponsableContract
 {
     use Responsable;
 
+    public static function created(
+        ?string $message = null,
+        null|array|Model|JsonResource $data = [],
+        array $additionalData = [],
+        array $headers = [],
+    ): self {
+        return self::success(
+            message: $message,
+            data: $data,
+            additionalData: $additionalData,
+            status: Status::CREATED,
+            headers: $headers,
+        );
+    }
+
     public static function noContent(): self
     {
         return new self(status: Status::NO_CONTENT);
