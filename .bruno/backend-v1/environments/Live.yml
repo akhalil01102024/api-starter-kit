@@ -3,4 +3,4 @@ variables:
   - name: baseUrl
     value: https://example-backend.wakeb.tech/v1
   - name: token
-    value: ""
+    value: bearer-token

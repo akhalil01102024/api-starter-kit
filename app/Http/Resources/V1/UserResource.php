@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\V1\Auth;
+namespace App\Http\Resources\V1;
 
 use App\Http\Resources\V1\Common\CarbonResource;
 use App\Models\User;

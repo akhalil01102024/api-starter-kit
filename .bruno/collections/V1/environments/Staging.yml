@@ -1,6 +1,0 @@
-name: Staging
-variables:
-  - name: baseUrl
-    value: https://example-backend-staging.wakeb.tech/v1
-  - name: token
-    value: ""

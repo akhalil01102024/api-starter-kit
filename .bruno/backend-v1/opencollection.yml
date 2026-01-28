@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: V1
+  name: APIStarterKit Backend V1
 config:
   proxy:
     inherit: true
